@@ -16,5 +16,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/opengl/library/opengl.jar"/>
+	<classpathentry kind="src" path="data"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
