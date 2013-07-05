@@ -8,7 +8,7 @@ import processing.opengl.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class NightGames2 extends PApplet implements Observer {
+public class NightGames2 extends PApplet {
 //	public static void main(String args[]) {
 //        PApplet.main(new String[] {"--present",  "NightGames2" });
 //    }
@@ -77,6 +77,7 @@ public class NightGames2 extends PApplet implements Observer {
 	public MovePalette grey_m = MovePalette.GREY_MOVE; 
 	public MovePalette violet_m = MovePalette.VIOLET_MOVE; 
 
+	
 	public void setup() {
 		size(1280,720);
 		frameRate(30);
@@ -111,7 +112,7 @@ public class NightGames2 extends PApplet implements Observer {
 			
 		  }
 		  repeller =new Repeller(this, 700,650);	
-		  sceneManager = new SceneManager(this, osc);
+		  sceneManager = new SceneManager(this, osc,osc);
 	} 
 
 	private void cleanList() {
@@ -122,7 +123,7 @@ public class NightGames2 extends PApplet implements Observer {
 			
 			int checker = mover.getConnection_type();
 			if(checker ==1)
-				//mlist.remove(mover); 
+				mlist.remove(mover); 
 			
 			println("i am the junk checker" + checker); 
 
@@ -181,15 +182,11 @@ public class NightGames2 extends PApplet implements Observer {
 					}
 	        
 			btn.display();
-			
+			sceneManager.updateScene(); 
 			}
 			
 		}
-	public void oscReceived(Observable obs, Object arg) {
-		
-		sceneManager.sceneSelect();
-		
-	} 
+
 //			public void keyPressed(){
 //			        if(key == 'f') exitFullscreen();
 //			    }

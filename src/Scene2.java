@@ -2,8 +2,15 @@ import io.thp.psmove.PSMove;
 
 import java.util.ArrayList;
 
+import processing.core.PApplet;
 
-public class Scene2 implements IScene {
+
+public class Scene2 extends Scene {
+
+	Scene2(PApplet p_) {
+		super(p_);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void getMoves(ArrayList<PSMove> mlist) {

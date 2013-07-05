@@ -183,7 +183,7 @@ public class OscObject extends Observable   {
 	}
 	
 	public void msgReceived() {
-		p.println("notified");
+		//p.println("notified");
 		setChanged(); 
 		notifyObservers(); 
 		
