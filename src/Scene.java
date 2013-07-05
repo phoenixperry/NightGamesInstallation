@@ -9,9 +9,10 @@ import java.util.ArrayList;
 
 public abstract class Scene {
 	PApplet p; 
-	
-	Scene(PApplet p_){
+	private ArrayList<PSMove> mlist; 
+	Scene(PApplet p_, ArrayList<PSMove> mlist_){
 		p=p_; 
+		mlist = mlist_; 
 	} 
 	
 	public void getMoves(ArrayList<PSMove> mlist){} 

@@ -1,18 +1,20 @@
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import processing.core.*;
-
+import io.thp.psmove.*;
 
 public class SceneManager implements Observer{
 	PApplet p; 
 	OscObject osc; 
 
 	Observable observable; 
-	
+	public ArrayList<PSMove> mList; 
+
 	//all three scenes 
 	Scene1 scene1; 
 	Scene2 scene2; 
@@ -23,9 +25,11 @@ public class SceneManager implements Observer{
 	//this is redic lame. 
 
 	
-	SceneManager(PApplet p_,OscObject osc_,Observable observable_) {
+	SceneManager(PApplet p_,OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
 		p=p_; 
 		osc = osc_; 
+		//mList = i
+				
 		this.observable = observable_; 
 		observable.addObserver(this); 
 	}
