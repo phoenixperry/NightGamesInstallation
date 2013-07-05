@@ -7,7 +7,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class OscObject implements Observer {
+public class OscObject extends Observable   {
 	PApplet p; 
 	public OscP5 oscP5; 
 	public NetAddress myRemoteLocation; 
@@ -22,7 +22,7 @@ public class OscObject implements Observer {
 	
 	OscObject(PApplet p_, String location, int mySender, int myReceiver, Observable observable){
 		this.observable = observable; 
-		observable.addObserver(this);
+		//observable.addObserver(this);
 		
 		p=p_; 
 		//listeing here
@@ -177,16 +177,16 @@ public class OscObject implements Observer {
 	{
 		
 		oscReceived=(String)msg.addrPattern(); 
-
+		msgReceived(); 
 		//p.println(oscReceived); 
 		
 	}
 	
 	public void msgReceived() {
+		p.println("notified");
 		setChanged(); 
 		notifyObservers(); 
 		
 	} 
 	
 }
-;
