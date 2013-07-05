@@ -14,7 +14,8 @@ public class OscObject extends Observable   {
 	public OscMessage myMessage; 
 	public OscProperties myProperties = new OscProperties();
 	public String oscReceived; 
-
+	public OscMessage receivedMsg;
+	public String typetag; 
 	Observable observable; 
 	
 	float gx, gy,gz, trigger,on,off=0.0f; 
@@ -175,10 +176,12 @@ public class OscObject extends Observable   {
 	
 	public void oscEvent(OscMessage msg)
 	{
-		
+		receivedMsg = msg; 
 		oscReceived=(String)msg.addrPattern(); 
 		msgReceived(); 
 		//p.println(oscReceived); 
+//		typetag = msg.typetag(); 
+//		 p.println(" typetag: "+msg.typetag()+ msg.addrPattern().valueOf(0));
 		
 	}
 	
