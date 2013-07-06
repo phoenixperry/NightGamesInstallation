@@ -16,9 +16,7 @@ public class SceneManager implements Observer{
 	public ArrayList<PSMove> mList; 
 
 	//all three scenes 
-	Scene1 scene1; 
-	Scene2 scene2; 
-	Scene3 scene3; 
+
 	Scene currentScene; 
 	int triggerSwitch = 0; 
 	//these are dirty fixes for the way the touch osc btns work - build an app when you have time
@@ -28,10 +26,13 @@ public class SceneManager implements Observer{
 	SceneManager(PApplet p_,OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
 		p=p_; 
 		osc = osc_; 
-		//mList = i
+		mList = mlist_;
+		
 				
 		this.observable = observable_; 
 		observable.addObserver(this); 
+		
+	
 	}
 	
 	public void oscReceived(Observable obs, Object arg) {
@@ -52,40 +53,40 @@ public class SceneManager implements Observer{
 	} 
 	public void sceneSelect() {
 		if(osc.oscReceived!=null){
-		
-		if(osc.oscReceived.equals("/scene1")){
-			p.println("i am scene1");
-		
-			scene1 = new Scene1(p); 
-			currentScene = scene1; 
+			if(osc.oscReceived.equals("/scene1")){
+				
+				p.println("i am scene1");	
+				currentScene =  new Scene1(p);
+				currentScene.name = "scene1";
+			} 
 			
-		} 
-		
-		else if(osc.oscReceived.equals("/scene2")){
-			p.println("i am scene2");
-		
-			scene2 = new Scene2(p); 
-			currentScene = scene2; 
+			else if(osc.oscReceived.equals("/scene2")){
+				p.println("i am scene2");
 			
-		} 
-		else if(osc.oscReceived.equals("/scene3")){
-			p.println("i am scene3");
+				currentScene = new Scene2(p); 
 
-			scene3 = new Scene3(p);
-			currentScene = scene3; 
-		} 
-		else if(osc.oscReceived.equals("/stop")){
-			p.println("stop all scenes");
-			triggerSwitch =0; 
-
-		} 
-		
+				
+			} 
+			else if(osc.oscReceived.equals("/scene3")){
+				p.println("i am scene3");
+	
+				currentScene = new Scene3(p);
+				
+			} 
+			else if(osc.oscReceived.equals("/stop")){
+				p.println("stop all scenes");
+				triggerSwitch =0; 
+	
+			} 
+			currentScene.setMoves(mList);
 		}	
+		
 	}
 	public void updateScene(){
 		if(currentScene!=null&&triggerSwitch==1){
-		currentScene.update();
-		currentScene.display();
+	
+			currentScene.update();
+			currentScene.display();
 		}
 	} 
 	

@@ -8,20 +8,26 @@ import io.thp.psmove.psmoveapi;
 import java.util.ArrayList;
 
 public abstract class Scene {
-	PApplet p; 
-	private ArrayList<PSMove> mlist; 
-	Scene(PApplet p_, ArrayList<PSMove> mlist_){
-		p=p_; 
-		mlist = mlist_; 
+	protected PApplet p; 
+	protected ArrayList<PSMove> mlist; 
+	public  String name; 
+	Scene(PApplet p_){
 	} 
 	
-	public void getMoves(ArrayList<PSMove> mlist){} 
+	public void setMoves(ArrayList<PSMove> mlist_){
+		mlist = mlist_;
+	} 
 	
-	public void setMoveColorstoWhite(){}
+	public void setMoveColorstoWhite(){
+		for (int i = 0; i < mlist.size(); i++) {
+			mlist.get(i).set_leds(255, 255, 255);
+		}
+
+	}
 	
-	public void update(){} 
+	public abstract void update(); 
 	
-	public void display(){} 
+	public abstract void display(); 
 	
 	
 }

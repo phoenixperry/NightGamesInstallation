@@ -10,26 +10,29 @@ public class Scene1 extends Scene{
 
 
 
-	PApplet p; 
+	//PApplet p; 
 	Timers tm = new Timers(1,5);
+	
 	Scene1(PApplet p_) {
 		super(p_);
-		p=p_; 
+
+		//p=p_; 
 		// TODO Auto-generated constructor stub
 	}
 
-	public void getMoves(ArrayList<PSMove> mlist){} 
+//	public void setMoves(ArrayList<PSMove> mlist_){
+//		mlist = mlist_;
+//	} 
 	
-	public void setMoveColorstoWhite()
-	{}
-	
-	public void update(){
-		p.println("scene 1 updating");
+	//setLedsToWhite
+
+ public void update(){
+	 	p.println("scene 1 updates");
 		
 	} 
 	
-	public void display(){
-
+ public void display(){
+	 p.println("scene 1 displays");
 	} 
 
 }

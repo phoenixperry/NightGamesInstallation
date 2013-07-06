@@ -112,7 +112,7 @@ public class NightGames2 extends PApplet {
 			
 		  }
 		  repeller =new Repeller(this, 700,650);	
-		  sceneManager = new SceneManager(this, osc,osc);
+		  sceneManager = new SceneManager(this, osc,osc,mlist);
 	} 
 
 	private void cleanList() {

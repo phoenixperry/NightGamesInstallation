@@ -13,7 +13,7 @@ public class Scene2 extends Scene {
 	}
 
 	@Override
-	public void getMoves(ArrayList<PSMove> mlist) {
+	public void setMoves(ArrayList<PSMove> mlist) {
 		// TODO Auto-generated method stub
 
 	}
