@@ -78,11 +78,14 @@ public class SceneManager implements Observer{
 		}	
 		
 	}
-	public void updateScene(){
+	
+	public void updateScene(OscObject sm_osc, MoveToOsc sm_mto){
 		if(currentScene!=null&&triggerSwitch==1){
 	
 			currentScene.update();
 			currentScene.display();
+			currentScene.setOsc(sm_osc, sm_mto);
+			
 		}
 	} 
 	

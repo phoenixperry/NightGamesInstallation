@@ -115,6 +115,51 @@ public class MoveToOsc extends Observable {
 
 	}
 	
+	void handle(int i_, PSMove move, OscObject osc) {
+	
+		
+		while (move.poll() != 0) {
+		}
+		activeMove = i_;
+		
+
+		    
+		move.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
+				gz);
+
+
+		float xt = PApplet.abs(getGX());
+		float yt = gy[0];
+		//println(yt+"yt");
+		float zt = PApplet.abs(getGZ());
+		//acts a high pass filter to weed junk out 
+		
+		if (yt > 1.2) {
+			setChanged();
+			on = 127; 
+			holderx = p.map(gx[0], -20, 20, 0, 50);
+			holderx = p.abs(holderx);
+			
+			
+			holdery = p.map(gy[0], -20, 20, 0, 127);
+			holdery = p.abs(holdery);
+			
+			holderz = p.map(gz[0], -20, 20, 0, 127);
+			holderz = p.abs(holderz);
+			p.println("i am the holder " + holderx);
+	
+			//p.println( gy[0] + " before observe");
+			setChanged();
+			notifyObservers();
+			//p.println( gy[0] + " after observe");
+
+		} else {
+			on = 0.0f; 
+			clearChanged();
+		}
+
+	}
+	
 	public float getGX() {
 		return holderx; 
 		//return gx[0];

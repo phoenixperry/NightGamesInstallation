@@ -134,58 +134,14 @@ public class NightGames2 extends PApplet {
 		background(black.r, black.g, black.b);
 		bgImage.displayWithoutTint(0, 0);
 		PVector gravity = new PVector(0,0.1f);
-		//mySystem.applyForce(gravity); 
-		//mySystem.applyRepeller(repeller);
-		//mySystem.run();
-		//repeller.display();
-		
-			for(int i =0; i< mlist.size(); i++){
-				HudObject btn = hudMonsters.get(i);
-				
-				//ParticleSystem psNow = mySystems.get(i);
-				PSMove move = mlist.get(i);	
+
 	
-					switch (i) {
-					case 0:
-						mto.handle(i, move, osc, btn);
-						mto.setLedColor(i, move, green_m.r, green_m.g, green_m.b);
-						
-						break;
-					case 1:
-						mto.handle(i, move, osc, btn);
-						mto.setLedColor(i, move, yellow_m.r, yellow_m.g, yellow_m.b);
-						break;
-					case 2:
-						mto.handle(i, move, osc, btn);
-						//mto.handle(i, move, osc, psNow);
-						mto.setLedColor(i, move, blue_m.r, blue_m.g, blue_m.b);
-						break;
-					case 3:
-						mto.handle(i, move, osc, btn);
-						mto.setLedColor(i, move, pink_m.r, pink_m.g, pink_m.b);
-						break;
-					case 4:
-						mto.handle(i, move, osc, btn);
-						mto.setLedColor(i, move, red_m.r, red_m.g, red_m.b);
-						break;
-					case 5:
-						mto.handle(i, move, osc, btn);
-						mto.setLedColor(i, move, grey_m.r, grey_m.g, grey_m.b);
-						break;
-					case 6:
-						//mto.handle(i, move, osc, mySystem);
-						mto.setLedColor(i, move, violet_m.r, violet_m.g, violet_m.b);
-						break;
 		
-					default:
-						break;
-					}
-	        
-			btn.display();
-			sceneManager.updateScene(); 
-			}
+		
+			sceneManager.updateScene(osc,mto); 
+		
 			
-		}
+	}
 
 //			public void keyPressed(){
 //			        if(key == 'f') exitFullscreen();

@@ -20,9 +20,7 @@ public class Scene1 extends Scene{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setMoves(ArrayList<PSMove> mlist_){
-		mlist = mlist_;
-	} 
+
 	
 
  public void update(){
