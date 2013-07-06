@@ -19,16 +19,12 @@ public class SceneManager implements Observer{
 
 	Scene currentScene; 
 	int triggerSwitch = 0; 
-	//these are dirty fixes for the way the touch osc btns work - build an app when you have time
-	//this is redic lame. 
 
 	
 	SceneManager(PApplet p_,OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
 		p=p_; 
 		osc = osc_; 
-		mList = mlist_;
-		
-				
+		mList = mlist_;				
 		this.observable = observable_; 
 		observable.addObserver(this); 
 		

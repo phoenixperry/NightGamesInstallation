@@ -20,14 +20,14 @@ public class Scene1 extends Scene{
 		// TODO Auto-generated constructor stub
 	}
 
-//	public void setMoves(ArrayList<PSMove> mlist_){
-//		mlist = mlist_;
-//	} 
+	public void setMoves(ArrayList<PSMove> mlist_){
+		mlist = mlist_;
+	} 
 	
-	//setLedsToWhite
 
  public void update(){
 	 	p.println("scene 1 updates");
+	 	setMoveColorstoWhite(); 
 		
 	} 
 	
