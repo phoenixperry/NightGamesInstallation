@@ -1,39 +1,32 @@
 import io.thp.psmove.PSMove;
+import io.thp.psmove.psmoveapi;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import processing.core.*;
 
-import processing.core.PApplet;
+public class Scene2 extends Scene{
 
 
-public class Scene2 extends Scene {
 
+	//PApplet p; 
+	Timers tm = new Timers(1,5);
+	
 	Scene2(PApplet p_) {
 		super(p_);
+
+		//p=p_; 
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public void setMoves(ArrayList<PSMove> mlist) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void setMoveColorstoWhite() {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	public void update() {
-		// TODO Auto-generated method stub
-		setMoveColorstoWhite(); 
-
-	}
-
-
-	public void display() {
-		// TODO Auto-generated method stub
-
-	}
+ public void update(){
+	 	p.println("scene 2 updates");
+	 	setMoveColorstoWhite(); 
+	} 
+	
+ public void display(){
+	 p.println("scene 2 displays");
+	} 
 
 }

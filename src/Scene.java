@@ -16,9 +16,11 @@ public abstract class Scene {
 	
 	public void setMoves(ArrayList<PSMove> mlist_){
 		mlistinScene = mlist_;
+		p.println(mlistinScene.size() + "moves in scene manager"); 
 	} 
 	
 	public void setOsc(OscObject osc_, MoveToOsc mto_){
+		
 		for (int i = 0; i < mlistinScene.size(); i++) {
 			mto_.handle(i,mlistinScene.get(i), osc_);
 		}

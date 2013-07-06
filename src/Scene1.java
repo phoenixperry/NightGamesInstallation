@@ -20,9 +20,6 @@ public class Scene1 extends Scene{
 		// TODO Auto-generated constructor stub
 	}
 
-
-	
-
  public void update(){
 	 	p.println("scene 1 updates");
 	 	setMoveColorstoWhite(); 
