@@ -28,5 +28,6 @@ public class Scene2 extends Scene{
  public void display(){
 	 p.println("scene 2 displays");
 	} 
-
+ public void colorLoop(){
+ }
 }

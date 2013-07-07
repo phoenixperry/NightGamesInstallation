@@ -187,16 +187,16 @@ public class MoveToOsc extends Observable {
 		move.update_leds();
 	}
 
-	public void shaken(PSMove currentMove){
-		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
-				gz);
-		float yt = gy[0];
-		
-		if(yt > 1.8){
-			shakenMove = true; 
-			setChanged(); 
-			notifyObservers();
-			
-		}	
-	}
+//	public void shaken(PSMove currentMove){
+//		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
+//				gz);
+//		float yt = gy[0];
+//		
+//		if(yt > 1.8){
+//			shakenMove = true; 
+//			setChanged(); 
+//			notifyObservers();
+//			
+//		}	
+//	}
 }

@@ -12,8 +12,8 @@ public class Timers {
 		currentScene = currentScene_; 
 		
 		//note this this thing to do, time to wait to start, interval for doing it
-		timer1.schedule(new TimerManager("alpha", currentScene_), 2*60*1000); 
-	//	timer2.schedule(new TimerManager("delta"), t1*1000, t1*1000); 
+		timer1.schedule(new TimeMan_WhiteMoves("alpha", currentScene_), 2*60*1000); 
+	//	timer2.schedule(new TimeMan_WhiteMoves("delta"), t1*1000, t1*1000); 
 		
 	}
 }

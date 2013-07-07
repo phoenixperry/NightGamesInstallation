@@ -60,5 +60,6 @@ public abstract class Scene {
 	
 	public abstract void display(); 
 	
+	public abstract void colorLoop();
 	
 }

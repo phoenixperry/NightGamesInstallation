@@ -30,4 +30,7 @@ public class Scene3 extends Scene{
 	 p.println("scene 1 displays");
 	} 
 
+ public void colorLoop(){
+ } 
+
 }

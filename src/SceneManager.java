@@ -52,7 +52,8 @@ public class SceneManager implements Observer{
 			if(osc.oscReceived.equals("/scene1")){
 				
 				p.println("i am scene1");	
-				currentScene =  new Scene1(p,sm_mto);
+				//sm_mto
+				currentScene =  new Scene1(p);
 				currentScene.name = "scene1";
 			} 
 			

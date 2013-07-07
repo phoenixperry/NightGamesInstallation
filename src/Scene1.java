@@ -12,22 +12,24 @@ import javax.xml.stream.events.StartDocument;
 
 import processing.core.*;
 
-public class Scene1 extends Scene implements Observer{
+public class Scene1 extends Scene {
 
+	//implements Observer
 	int count = 0; 
 	int savedTime;
 	int totalTime = 5000;
 	Timer whiteOut; 
-	Timer whiteRed; 
+	Timer colorFlip; 
 	public Observable ob;
 	
-	Scene1(PApplet p_, Observable ob_) {
+	Scene1(PApplet p_) {
+		// Observable ob_
 		super(p_);
-		this.ob = ob_; 
-		ob.addObserver(this);
+		//this.ob = ob_; 
+		//ob.addObserver(this);
 		whiteOut = new Timer(); 
-		whiteOut.schedule(new TimerManager("alpha", this),1000);
-		whiteRed.schedule(new TimerManager("whiteRed",this), 1000,500);
+		savedTime = p.millis();
+	
 		
 		//p=p_; 
 		// TODO Auto-generated constructor stub
@@ -36,11 +38,16 @@ public class Scene1 extends Scene implements Observer{
 
 	
 public void updateScene(){
-			
-			p.println("scene 1 updates");
-	 		
-	 		//setMoveColorstoWhite(); 
-	 		
+//		p.println("scene 1 updates");
+//		whiteOut.schedule(new TimeMan_WhiteMoves("whiteMoves", this),0,500);
+//		int currentTime = savedTime - totalTime;
+//		
+//		if(currentTime>=0 && currentTime >-1){
+//			whiteOut.cancel(); 
+//			p.println("Turning one move loop");
+//			display();
+//		}	
+
 //	 		colors.get(count); 
 //	 		mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
 //	 		mlistinScene.get(count).update_leds();
@@ -53,16 +60,31 @@ public void updateScene(){
 // } 
 //	
  public void display(){
-	 p.println("scene 1 displays");
+	 //this accounts for the first red move 
+//	 colors.get(count); 
+//	 if(count != mlistinScene.size()){
+//	 	mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
+//	 	mlistinScene.get(count).update_leds();
+//	 	sceneMto.shaken(mlistinScene.get(count));
+//	 }
 	}
 
 
-
-
-@Override
-public void update(Observable o, Object arg) {
-	// TODO Auto-generated method stub
-	p.println("red move shaken");
-} 
+//
+ public void colorLoop(){
+//	 //this handles the rest 
+//	 if(count != mlistinScene.size()){
+//	 colors.get(count); 
+//	 mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
+//	 mlistinScene.get(count).update_leds();
+//	 }
+//} 
+//
+//	public void update(Observable o, Object arg) {
+//		
+//		colorFlip.schedule(new TimeMan_MoveChange("colorLoop",this), (long)5000,(long)500.);
+//		// TODO Auto-generated method stub
+//		p.println("red move shaken");
+	} 
 
 }
