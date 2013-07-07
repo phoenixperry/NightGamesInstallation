@@ -19,7 +19,7 @@ public class SceneManager implements Observer{
 
 	Scene currentScene; 
 	int triggerSwitch = 0; 
-
+	MoveToOsc sm_mto; 
 	
 	SceneManager(PApplet p_,OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
 		p=p_; 
@@ -52,7 +52,7 @@ public class SceneManager implements Observer{
 			if(osc.oscReceived.equals("/scene1")){
 				
 				p.println("i am scene1");	
-				currentScene =  new Scene1(p);
+				currentScene =  new Scene1(p,sm_mto);
 				currentScene.name = "scene1";
 			} 
 			
@@ -79,10 +79,11 @@ public class SceneManager implements Observer{
 		
 	}
 	
-	public void updateScene(OscObject sm_osc, MoveToOsc sm_mto){
+	public void updateScene(OscObject sm_osc, MoveToOsc sm_mto_){
+		sm_mto = sm_mto_; 
 		if(currentScene!=null&&triggerSwitch==1){
 	
-			currentScene.update();
+			currentScene.updateScene();
 			currentScene.display();
 			currentScene.setOsc(sm_osc, sm_mto);
 			

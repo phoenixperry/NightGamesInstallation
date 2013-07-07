@@ -35,7 +35,8 @@ public class NightGames2 extends PApplet {
 		PINK(239,156,162), 
 		RED(224,60,27), 
 		BLACK(0,8,21),
-		GREY(96,133,147);
+		GREY(96,133,147),
+		PURPLE(255,255,0);
 		public int r,g,b; 
 		private Colors(int r, int g, int b)
 		{
