@@ -11,23 +11,50 @@ public class Scene1 extends Scene{
 
 
 	//PApplet p; 
-	Timers tm = new Timers(1,5);
-	
+
+	int count = 0; 
+	int savedTime;
+	int totalTime = 5000;
+	Timer whiteOut; 
+	TimeMan_WhiteMoves twm;
+	Timer colorLoop; 
+	TimeMan_MoveChange tcl; 
+	int passedTime; 
 	Scene1(PApplet p_) {
 		super(p_);
-
+		whiteOut = new Timer(); 
+		twm = new TimeMan_WhiteMoves("whiteMoves", this);
+		whiteOut.schedule(twm,500,2000);
+		savedTime = p.millis();
+		tcl = new TimeMan_MoveChange("colorLoop", this);
 		//p=p_; 
 		// TODO Auto-generated constructor stub
 	}
 
  public void update(){
-	 	p.println("scene 1 updates");
-	 	setMoveColorstoWhite(); 
+	 	passedTime = p.millis() - savedTime;
+	 	//p.println(passedTime);
+		if(passedTime > totalTime){
+		whiteOut.cancel(); 
+		p.println("Turning one move loop");
+		colorLoop();
+		}
 		
-	} 
-	
+	}
+ public void startColorLoop(){
+	 colorLoop.schedule(tcl,10,2000);
+ }
+ public void colorLoop(){
+	 //this handles the rest 
+	 if(count != mlistinScene.size()){
+	 colors.get(count); 
+	 mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
+	 mlistinScene.get(count).update_leds();
+	 mlistinScene.get(count).set_rumble(100);
+	 }
+} 
  public void display(){
-	 p.println("scene 1 displays");
+	
 	} 
 
  

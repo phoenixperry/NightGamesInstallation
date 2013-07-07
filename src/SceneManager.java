@@ -11,7 +11,7 @@ import io.thp.psmove.*;
 public class SceneManager implements Observer{
 	PApplet p; 
 	OscObject osc; 
-
+	MoveToOsc mto; 
 	Observable observable; 
 	public ArrayList<PSMove> mList; 
 
@@ -21,13 +21,14 @@ public class SceneManager implements Observer{
 	int triggerSwitch = 0; 
 
 	
-	SceneManager(PApplet p_,OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
+	SceneManager(PApplet p_, MoveToOsc mto_, OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
+		
 		p=p_; 
 		osc = osc_; 
 		mList = mlist_;				
 		this.observable = observable_; 
 		observable.addObserver(this); 
-		
+		mto = mto_;
 	
 	}
 	
@@ -79,12 +80,13 @@ public class SceneManager implements Observer{
 		
 	}
 	
-	public void updateScene(OscObject sm_osc, MoveToOsc sm_mto){
+	public void updateScene(){
 		if(currentScene!=null&&triggerSwitch==1){
-	
+			for (int i = 0; i < mList.size(); i++) {
+				mto.handle(mList.get(i), osc);
+			}
 			currentScene.update();
 			currentScene.display();
-			currentScene.setOsc(sm_osc, sm_mto);
 			
 		}
 	} 

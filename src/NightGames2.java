@@ -112,7 +112,7 @@ public class NightGames2 extends PApplet {
 			
 		  }
 		  repeller =new Repeller(this, 700,650);	
-		  sceneManager = new SceneManager(this, osc,osc,mlist);
+		  sceneManager = new SceneManager(this, mto, osc, osc, mlist);
 	} 
 
 	private void cleanList() {
@@ -134,11 +134,14 @@ public class NightGames2 extends PApplet {
 		background(black.r, black.g, black.b);
 		bgImage.displayWithoutTint(0, 0);
 		PVector gravity = new PVector(0,0.1f);
+		sceneManager.updateScene(); 
 
 	
-		
-		
-			sceneManager.updateScene(osc,mto); 
+//		
+//		for (int i = 0; i < mlist.size(); i++) {
+//			sceneManager.updateScene(osc,mto, mlist.get(i)); 
+//		}
+
 		
 			
 	}

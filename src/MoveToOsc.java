@@ -25,7 +25,7 @@ public class MoveToOsc extends Observable {
 	
 	}
 
-	//triggers when move vals change 
+	//this runs on every frame  
 	void handle(int i_, PSMove move, OscObject osc, HudObject btn) {
 	
 		
@@ -115,12 +115,12 @@ public class MoveToOsc extends Observable {
 
 	}
 	
-	void handle(int i_, PSMove move, OscObject osc) {
+	void handle(PSMove move, OscObject osc) {
 	
 		
 		while (move.poll() != 0) {
 		}
-		activeMove = i_;
+		//activeMove = i_;
 		
 
 		    
