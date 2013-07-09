@@ -55,6 +55,7 @@ public class SceneManager implements Observer{
 				p.println("i am scene1");	
 				currentScene =  new Scene1(p);
 				currentScene.name = "scene1";
+				currentScene.setMoveToOsc(mto);
 			} 
 			
 			else if(osc.oscReceived.equals("/scene2")){

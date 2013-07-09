@@ -18,6 +18,7 @@ public class MoveToOsc extends Observable {
 	//keeps a record of the most active move 
 	int activeMove = 0;
 	private int trigger = 0; 
+	public int whileShaken = 0; 
 	
 	MoveToOsc(PApplet p_) {
 		p = p_;
@@ -187,16 +188,19 @@ public class MoveToOsc extends Observable {
 		move.update_leds();
 	}
 
-	public void shaken(PSMove currentMove){
+	public int shaken(PSMove currentMove){
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
 		float yt = gy[0];
 		
 		if(yt > 1.8){
-			shakenMove = true; 
+			whileShaken++; 
 			setChanged(); 
 			notifyObservers();
-			
 		}	
+		else {
+			whileShaken = 0; 
+		} 
+		return whileShaken; 
 	}
 }

@@ -11,6 +11,7 @@ public abstract class Scene {
 	protected PApplet p; 
 	protected ArrayList<PSMove> mlistinScene; 
 	public  String name;
+	protected MoveToOsc mto; 
 
 	public NightGames2.MovePalette green_m = NightGames2.MovePalette.GREEN_MOVE; 
 	public NightGames2.MovePalette yellow_m = NightGames2.MovePalette.YELLOW_MOVE; 
@@ -58,6 +59,10 @@ public abstract class Scene {
 	} 
 	
 	public abstract void display(); 
+	public void setMoveToOsc(MoveToOsc mto_){
+		mto = mto_; 
+	}
+	
 	
 	
 }
