@@ -11,7 +11,7 @@ public class Scene3 extends Scene{
 
 
 	//PApplet p; 
-
+	Timers tm = new Timers(1,5);
 	
 	Scene3(PApplet p_) {
 		super(p_);
@@ -20,17 +20,14 @@ public class Scene3 extends Scene{
 		// TODO Auto-generated constructor stub
 	}
 
- public void updateScene(){
+ public void update(){
 	 	p.println("scene 3 updates");
 	 	setMoveColorstoWhite(); 
 		
 	} 
 	
  public void display(){
-	 p.println("scene 1 displays");
+	 p.println("scene 3 displays");
 	} 
-
- public void colorLoop(){
- } 
-
+ public void colorLoop(){}
 }
