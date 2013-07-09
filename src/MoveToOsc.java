@@ -1,4 +1,5 @@
-import processing.core.*;import io.thp.psmove.*;
+import processing.core.*;
+import io.thp.psmove.*;
 import java.util.Observable;
 
 public class MoveToOsc extends Observable {
@@ -14,7 +15,7 @@ public class MoveToOsc extends Observable {
 	
 	private float holdery; 
 	private float holderz; 
-	public boolean shakenMove = false; 
+	
 	//keeps a record of the most active move 
 	int activeMove = 0;
 	private int trigger = 0; 
@@ -188,6 +189,7 @@ public class MoveToOsc extends Observable {
 		move.update_leds();
 	}
 
+
 	public int shaken(PSMove currentMove){
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
@@ -203,4 +205,5 @@ public class MoveToOsc extends Observable {
 		} 
 		return whileShaken; 
 	}
+
 }
