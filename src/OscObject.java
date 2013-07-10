@@ -42,10 +42,10 @@ public class OscObject extends Observable  implements Observer {
 			this.gx=moveOsc.getGX(); 
 			this.gy = moveOsc.getGY(); 
 			this.gz = moveOsc.getGZ();
-			
+			trigger = gx;
 			//this is where you are at. 
 			//this.trigger = moveOsc.getTrigger();  
-			p.println(trigger + "i'm triger");
+			//p.println(trigger + "i'm triger");
 			this.message = moveOsc.getMessage();
 			
 			addToMessage();

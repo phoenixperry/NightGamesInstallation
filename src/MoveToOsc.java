@@ -27,8 +27,7 @@ public class MoveToOsc extends Observable {
 	
 	}
 	void working(PSMove incoming) {
-		
-		p.println("move to osc working" + getGX() + incoming.getGx());
+		//p.println("move to osc working" + getGX() +  "incomming " +incoming.getGx());
 	}
 	
 	//this runs on every frame  
@@ -121,9 +120,9 @@ public class MoveToOsc extends Observable {
 
 	}
 	
-	void handle(PSMove move, OscObject osc) {
+	void handle(PSMove move, OscObject osc, int i_) {
 	
-		
+		activeMove = i_; 
 		while (move.poll() != 0) {
 		}
 		//activeMove = i_;
@@ -136,7 +135,7 @@ public class MoveToOsc extends Observable {
 
 		float xt = PApplet.abs(getGX());
 		float yt = gy[0];
-		//println(yt+"yt");
+		p.println(yt+"yt");
 		float zt = PApplet.abs(getGZ());
 		//acts a high pass filter to weed junk out 
 		
@@ -152,7 +151,7 @@ public class MoveToOsc extends Observable {
 			
 			holderz = p.map(gz[0], -20, 20, 0, 127);
 			holderz = p.abs(holderz);
-			p.println("i am the holder " + holderx);
+			//p.println("i am the holder " + holderx);
 	
 			//p.println( gy[0] + " before observe");
 			setChanged();

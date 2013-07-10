@@ -1,11 +1,8 @@
 import io.thp.psmove.PSMove;
-import io.thp.psmove.psmoveapi;
+
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import javax.xml.ws.soap.MTOM;
 
 import processing.core.*;
 
@@ -18,10 +15,7 @@ public class Scene1 extends Scene{
 	int count = 0; 
 	int savedTime;
 	int totalTime = 1000;
-//	Timer whiteOut; 
-//	TimeMan_WhiteMoves twm;
-//	Timer colorLoop; 
-//	TimeMan_MoveChange tcl; 
+
 	int passedTime; 
 	int passedTime2; 
 	ArrayList<PSMove> movesInPlay = new ArrayList<PSMove>(); 
@@ -48,16 +42,16 @@ public void resetTime () {
 	 	if(firstRun){
 	 		while(passedTime < totalTime){
 	 			passedTime = p.millis() - savedTime;
-	 		 	p.println(passedTime + " this much time has passed");
+	 		 	//p.println(passedTime + " this much time has passed");
 	 			setMoveColorstoWhite(); 
 	 		}
 	 		
-	 		//p.println("inside FIRST RUN");
+	 		p.println("inside FIRST RUN");
 	
 			firstRun = false; 
 		}
 		if (!firstRun){
-			//p.println("inside second RUN");
+			p.println("inside second RUN");
 			colorLoop(); 
 			updateInPlayMoves();
 		}
@@ -70,7 +64,7 @@ public void resetTime () {
 	 //this loop runs every two seconds. 
 	 
 	 while(count < mlistinScene.size()){
-		//p.println("inside color RUN");
+		p.println("inside color RUN");
 		//get the top move in the 1st array  
 		//p.println("inside the move " + count);
 		colors.get(count); 
@@ -80,11 +74,12 @@ public void resetTime () {
 		 
 	 	passedTime2 = p.millis() - savedTime;
 	
-	 	int checkifMoved  = shaken(mlistinScene.get(count));
+	 	int checkifMoved  = mto.shaken(mlistinScene.get(count));
 	 	
-		//p.println("checking if it moved " + checkifMoved);
+		p.println("checking if it moved " + checkifMoved);
 		
 	 	if(passedTime2 > totalTime && checkifMoved > 0 ){
+	 		p.println("I MOVED");
 			//p.println("moveing moves to the second array " + movesInPlay.size());
 	 		movesInPlay.add(mlistinScene.get(count));
 	 		mlistinScene.remove(count);
@@ -111,6 +106,7 @@ public void resetTime () {
 	 
  } 
 	public int shaken(PSMove currentMove){
+		
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
 		

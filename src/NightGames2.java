@@ -28,6 +28,7 @@ public class NightGames2 extends PApplet {
 	public ArrayList<ParticleSystem> mySystems = new ArrayList<ParticleSystem>(); 
 	Repeller repeller;
 	SceneManager sceneManager; 
+	PSMove thisMove; 
 	public enum Colors{
 		GREEN (94,191,140), 
 		YELLOW(252,167,40), 
@@ -91,7 +92,7 @@ public class NightGames2 extends PApplet {
 	
 		background(0);
 		mto = new MoveToOsc (this);
-		osc = new OscObject(this, "192.168.0.13", 8000,8001,mto); 
+		osc = new OscObject(this, "127.0.0.1", 8000,8001,mto); 
 		//moves = new PSMove[psmoveapi.count_connected()];
 		
 		println(psmoveapi.count_connected()); 
@@ -112,7 +113,7 @@ public class NightGames2 extends PApplet {
 			
 		  }
 		  repeller =new Repeller(this, 700,650);	
-		  sceneManager = new SceneManager(this, mto, osc, osc, mlist);
+		  sceneManager = new SceneManager(this, mto,osc, osc, mlist);
 	} 
 
 	private void cleanList() {
@@ -134,15 +135,55 @@ public class NightGames2 extends PApplet {
 		background(black.r, black.g, black.b);
 		bgImage.displayWithoutTint(0, 0);
 		PVector gravity = new PVector(0,0.1f);
-		sceneManager.updateScene(); 
+//		sceneManager.updateScene(); 
+		for(int i =0; i< mlist.size(); i++){
+			HudObject btn = hudMonsters.get(i);
 
-	
-//		
-//		for (int i = 0; i < mlist.size(); i++) {
-//			sceneManager.updateScene(osc,mto, mlist.get(i)); 
-//		}
+			//ParticleSystem psNow = mySystems.get(i);
+			PSMove move = mlist.get(i);	
+			osc.gx = 5; 
+			sceneManager.updateScene(move, osc,i); 
+			
 
-		
+				switch (i) {
+				case 0:
+					mto.handle(i, move, osc, btn);
+					mto.setLedColor(i, move, green_m.r, green_m.g, green_m.b);
+
+					break;
+				case 1:
+					mto.handle(i, move, osc, btn);
+					mto.setLedColor(i, move, yellow_m.r, yellow_m.g, yellow_m.b);
+					break;
+				case 2:
+					mto.handle(i, move, osc, btn);
+					//mto.handle(i, move, osc, psNow);
+					mto.setLedColor(i, move, blue_m.r, blue_m.g, blue_m.b);
+					break;
+				case 3:
+					mto.handle(i, move, osc, btn);
+					mto.setLedColor(i, move, pink_m.r, pink_m.g, pink_m.b);
+					break;
+				case 4:
+					mto.handle(i, move, osc, btn);
+					mto.setLedColor(i, move, red_m.r, red_m.g, red_m.b);
+					break;
+				case 5:
+					mto.handle(i, move, osc, btn);
+					mto.setLedColor(i, move, grey_m.r, grey_m.g, grey_m.b);
+					break;
+				case 6:
+					//mto.handle(i, move, osc, mySystem);
+					mto.setLedColor(i, move, violet_m.r, violet_m.g, violet_m.b);
+					break;
+
+				default:
+					break;
+				}
+
+		btn.display();
+
+		}		
 			
 	}
 

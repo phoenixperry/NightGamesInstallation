@@ -57,6 +57,7 @@ public abstract class Scene {
 	public abstract void update(); 
 	
 	public abstract void display(); 
+	
 	public void setMoveToOsc(MoveToOsc mto_){
 		mto = mto_; 
 	}

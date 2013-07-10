@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Handler;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
@@ -19,16 +20,16 @@ public class SceneManager implements Observer{
 
 	Scene currentScene; 
 	int triggerSwitch = 0; 
-
+	PSMove currentMove; 
 	
-	SceneManager(PApplet p_, MoveToOsc mto_, OscObject osc_,Observable observable_, ArrayList<PSMove>mlist_) {
-		
-		p=p_; 
+	SceneManager(PApplet p_, MoveToOsc mto_,OscObject osc_, Observable observable_, ArrayList<PSMove>mlist_) {
 		osc = osc_; 
+		p=p_; 
 		mList = mlist_;				
 		this.observable = observable_; 
 		observable.addObserver(this); 
 		mto = mto_;
+		p.println(osc.gy +"test");
 	
 	}
 	
@@ -63,9 +64,7 @@ public class SceneManager implements Observer{
 			
 			else if(osc.oscReceived.equals("/scene2")){
 				p.println("i am scene2");
-			
 				currentScene = new Scene2(p); 
-
 				
 			} 
 			else if(osc.oscReceived.equals("/scene3")){
@@ -85,17 +84,20 @@ public class SceneManager implements Observer{
 		
 	}
 	
-	public void updateScene(){
-		 
+	public void updateScene( PSMove move, OscObject osc_, int i_){
+	
 		if(currentScene!=null&&triggerSwitch==1){
-			for (int i = 0; i < mList.size(); i++) {
-				mto.handle(mList.get(i), osc);
-				mto.working(mList.get(i)); 
+				mto.handle(move, osc_,i_);
+				mto.working(move); 
+				
+				mList.set(i_, move);
+				p.println(move.getGx() + "updating " + i_); 
+				currentScene.update();
+				currentScene.display();
+				p.println(osc.gx + "test2"); 
+				
 			}
-			currentScene.update();
-			currentScene.display();
-			
-		}
+		} 
 	} 
 	
-}
+	

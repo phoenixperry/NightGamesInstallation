@@ -11,7 +11,6 @@ public class Scene2 extends Scene{
 
 
 	//PApplet p; 
-	Timers tm = new Timers(1,5);
 	
 	Scene2(PApplet p_) {
 		super(p_);
