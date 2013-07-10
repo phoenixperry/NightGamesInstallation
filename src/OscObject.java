@@ -3,11 +3,12 @@ import oscP5.*;
 import netP5.*; 
 
 
+import java.awt.print.Printable;
 import java.util.Observable;
 import java.util.Observer;
 
 
-public class OscObject extends Observable   {
+public class OscObject extends Observable  implements Observer {
 	PApplet p; 
 	public OscP5 oscP5; 
 	public NetAddress myRemoteLocation; 
@@ -23,8 +24,9 @@ public class OscObject extends Observable   {
 	
 	OscObject(PApplet p_, String location, int mySender, int myReceiver, Observable observable){
 		this.observable = observable; 
-		//observable.addObserver(this);
-		
+		//you might need to comment this out and unimplement the observer 
+		observable.addObserver(this);
+
 		p=p_; 
 		//listeing here
 		oscP5 = new OscP5(this, 8001); 
@@ -43,7 +45,7 @@ public class OscObject extends Observable   {
 			
 			//this is where you are at. 
 			//this.trigger = moveOsc.getTrigger();  
-			//p.println(trigger + "i'm triger");
+			p.println(trigger + "i'm triger");
 			this.message = moveOsc.getMessage();
 			
 			addToMessage();

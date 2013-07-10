@@ -45,6 +45,7 @@ public abstract class Scene {
 	public void setMoveColorstoWhite(){
 		
 		for (int i = 0; i < mlistinScene.size(); i++) {
+			//p.println("leds should be white");
 			mlistinScene.get(i).set_leds(255, 255, 255);
 			mlistinScene.get(i).update_leds();
 		}
@@ -53,10 +54,7 @@ public abstract class Scene {
 	
 	public abstract void colorLoop();
 	
-	public void update() {
-		
-		
-	} 
+	public abstract void update(); 
 	
 	public abstract void display(); 
 	public void setMoveToOsc(MoveToOsc mto_){

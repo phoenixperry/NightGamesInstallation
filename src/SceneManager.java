@@ -40,6 +40,9 @@ public class SceneManager implements Observer{
 	public void update(Observable obs, Object arg) {
 		if(obs instanceof OscObject)
 		osc = (OscObject)obs;  
+		if(osc.receivedMsg.checkTypetag("s")){
+			p.println(osc.receivedMsg.get(0).stringValue());
+		}
 		//checking to make sure it's a float so we have the right value
 		if(osc.receivedMsg.checkTypetag("f")){
 		triggerSwitch = (int)osc.receivedMsg.get(0).floatValue(); 
@@ -79,12 +82,15 @@ public class SceneManager implements Observer{
 			currentScene.setMoves(mList);
 		}	
 		
+		
 	}
 	
 	public void updateScene(){
+		 
 		if(currentScene!=null&&triggerSwitch==1){
 			for (int i = 0; i < mList.size(); i++) {
 				mto.handle(mList.get(i), osc);
+				mto.working(mList.get(i)); 
 			}
 			currentScene.update();
 			currentScene.display();

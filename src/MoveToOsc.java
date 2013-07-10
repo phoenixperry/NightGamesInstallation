@@ -23,9 +23,14 @@ public class MoveToOsc extends Observable {
 	
 	MoveToOsc(PApplet p_) {
 		p = p_;
+		p.println("move osc object creeated");
 	
 	}
-
+	void working(PSMove incoming) {
+		
+		p.println("move to osc working" + getGX() + incoming.getGx());
+	}
+	
 	//this runs on every frame  
 	void handle(int i_, PSMove move, OscObject osc, HudObject btn) {
 	
@@ -194,9 +199,11 @@ public class MoveToOsc extends Observable {
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
 		float yt = gy[0];
+		//p.println("this is the yt"+ gy[0] );
+		//p.println("this is the yt"+ yt );
 		
-		if(yt > 1.8){
-			whileShaken++; 
+		if(yt > 1.3){
+			whileShaken +=yt; 
 			setChanged(); 
 			notifyObservers();
 		}	

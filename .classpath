@@ -11,11 +11,11 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/modes/java/libraries/opengl/library/opengl.jar"/>
 	<classpathentry kind="src" path="data"/>
-	<classpathentry kind="lib" path="/Users/phoenix/Documents/Processing/libraries/oscP5/library/oscP5.jar"/>
-	<classpathentry kind="lib" path="/Users/phoenix/Documents/Processing/libraries/psmove/library/psmove.jar">
+	<classpathentry kind="lib" path="/Users/phoenixperry/Documents/Processing/libraries/psmove/library/psmove.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/phoenix/Documents/Processing/libraries/psmove/library/macosx"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/phoenixperry/Documents/Processing/libraries/psmove/library/macosx"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/phoenixperry/Documents/Processing/libraries/oscP5/library/oscP5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

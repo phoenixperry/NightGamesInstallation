@@ -91,7 +91,7 @@ public class NightGames2 extends PApplet {
 	
 		background(0);
 		mto = new MoveToOsc (this);
-		osc = new OscObject(this, "127.0.0.1", 8000,8001,mto); 
+		osc = new OscObject(this, "192.168.0.13", 8000,8001,mto); 
 		//moves = new PSMove[psmoveapi.count_connected()];
 		
 		println(psmoveapi.count_connected()); 

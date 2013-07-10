@@ -17,23 +17,25 @@ public class Scene1 extends Scene{
 
 	int count = 0; 
 	int savedTime;
-	int totalTime = 5000;
-	Timer whiteOut; 
-	TimeMan_WhiteMoves twm;
-	Timer colorLoop; 
-	TimeMan_MoveChange tcl; 
+	int totalTime = 1000;
+//	Timer whiteOut; 
+//	TimeMan_WhiteMoves twm;
+//	Timer colorLoop; 
+//	TimeMan_MoveChange tcl; 
 	int passedTime; 
+	int passedTime2; 
 	ArrayList<PSMove> movesInPlay = new ArrayList<PSMove>(); 
+	boolean firstRun = true; 
+	private int whileShaken = 0; 
+	private float[] gx = { 0.f };
+	private float[] gy = { 0.f };
+	private float[] gz = { 0.f };	
 	
 	Scene1(PApplet p_) {
 		super(p_);
-		whiteOut = new Timer(); 
-		twm = new TimeMan_WhiteMoves("whiteMoves", this);
-		whiteOut.schedule(twm,500,2000);
+
 		savedTime = p.millis();
-		tcl = new TimeMan_MoveChange("colorLoop", this);
-		//p=p_; 
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 //this will restart the simple counter 
@@ -42,30 +44,48 @@ public void resetTime () {
 } 
  public void update(){
 	 	passedTime = p.millis() - savedTime;
-	 	//p.println(passedTime);
-		if(passedTime > totalTime){
-			whiteOut.cancel(); 
-			p.println("Turning one move loop");
-			resetTime();
-			colorLoop(); 
+	 	//p.println(passedTime + " this much time has passed");
+	 	if(firstRun){
+	 		while(passedTime < totalTime){
+	 			passedTime = p.millis() - savedTime;
+	 		 	p.println(passedTime + " this much time has passed");
+	 			setMoveColorstoWhite(); 
+	 		}
+	 		
+	 		//p.println("inside FIRST RUN");
+	
+			firstRun = false; 
 		}
-		updateInPlayMoves();	
+		if (!firstRun){
+			//p.println("inside second RUN");
+			colorLoop(); 
+			updateInPlayMoves();
+		}
+			
 	}
 
  public void colorLoop(){
+	
 	 //this handles the rest 
 	 //this loop runs every two seconds. 
 	 
-	 while(count != mlistinScene.size()){
+	 while(count < mlistinScene.size()){
+		//p.println("inside color RUN");
 		//get the top move in the 1st array  
+		//p.println("inside the move " + count);
 		colors.get(count); 
 		mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
 	 	mlistinScene.get(count).update_leds();
 	 	mlistinScene.get(count).set_rumble(100);
 		 
-	 	passedTime = p.millis() - savedTime;
-	 	int checkifMoved  = mto.shaken(mlistinScene.get(count));
-	 	if(passedTime > totalTime && checkifMoved > 0 ){
+	 	passedTime2 = p.millis() - savedTime;
+	
+	 	int checkifMoved  = shaken(mlistinScene.get(count));
+	 	
+		//p.println("checking if it moved " + checkifMoved);
+		
+	 	if(passedTime2 > totalTime && checkifMoved > 0 ){
+			//p.println("moveing moves to the second array " + movesInPlay.size());
 	 		movesInPlay.add(mlistinScene.get(count));
 	 		mlistinScene.remove(count);
 	 		resetTime(); 
@@ -90,6 +110,22 @@ public void resetTime () {
 	 
 	 
  } 
+	public int shaken(PSMove currentMove){
+		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
+				gz);
+		
+		float yt = gy[0];
+		//p.println(yt);
+		
+		if(yt > 1.3){
+			whileShaken +=yt;
+		}	
+		else {
+			whileShaken = 0; 
+		} 
+		return whileShaken; 
+	}
+
  public void display(){
 	
 	} 
