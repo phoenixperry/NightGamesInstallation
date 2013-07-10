@@ -19,7 +19,7 @@ public class TimeMan_MoveChange extends TimerTask{
 
 	public void run() {
 		System.out.println("inside run task " + strObj); 
-		currentScene.colorLoop(); 
+		//currentScene.colorLoop(); 
 		//put tests to see if strings are whatever function 
 		//then run the little bastards 
 		

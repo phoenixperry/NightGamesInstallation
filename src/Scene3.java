@@ -20,7 +20,7 @@ public class Scene3 extends Scene{
 		// TODO Auto-generated constructor stub
 	}
 
- public void update(){
+ public void update(PSMove mover, int i){
 	 	p.println("scene 3 updates");
 	 	setMoveColorstoWhite(); 
 		
@@ -29,5 +29,5 @@ public class Scene3 extends Scene{
  public void display(){
 	 p.println("scene 3 displays");
 	} 
- public void colorLoop(){}
+ public void colorLoop(PSMove mover, int i){}
 }

@@ -91,8 +91,9 @@ public class SceneManager implements Observer{
 				mto.working(move); 
 				
 				mList.set(i_, move);
+				currentScene.mlistinScene.set(i_, move);
 				p.println(move.getGx() + "updating " + i_); 
-				currentScene.update();
+				currentScene.update( move, i_);
 				currentScene.display();
 				p.println(osc.gx + "test2"); 
 				

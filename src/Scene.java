@@ -52,9 +52,9 @@ public abstract class Scene {
 
 	}
 	
-	public abstract void colorLoop();
+	public abstract void colorLoop(PSMove move, int i_);
 	
-	public abstract void update(); 
+	public abstract void update(PSMove mover, int i); 
 	
 	public abstract void display(); 
 	

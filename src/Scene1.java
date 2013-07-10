@@ -36,7 +36,7 @@ public class Scene1 extends Scene{
 public void resetTime () {
 	savedTime = p.millis();
 } 
- public void update(){
+ public void update(PSMove mover, int i){
 	 	passedTime = p.millis() - savedTime;
 	 	//p.println(passedTime + " this much time has passed");
 	 	if(firstRun){
@@ -52,18 +52,18 @@ public void resetTime () {
 		}
 		if (!firstRun){
 			p.println("inside second RUN");
-			colorLoop(); 
+			colorLoop(mover, i); 
 			updateInPlayMoves();
 		}
 			
 	}
 
- public void colorLoop(){
+ public void colorLoop(PSMove mover, int i){
 	
 	 //this handles the rest 
 	 //this loop runs every two seconds. 
 	 
-	 while(count < mlistinScene.size()){
+
 		p.println("inside color RUN");
 		//get the top move in the 1st array  
 		//p.println("inside the move " + count);
@@ -71,21 +71,21 @@ public void resetTime () {
 		mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
 	 	mlistinScene.get(count).update_leds();
 	 	mlistinScene.get(count).set_rumble(100);
-		 
+		p.println(mlistinScene.get(count).getGx() + "move gx of the move color loop has");  
 	 	passedTime2 = p.millis() - savedTime;
 	
-	 	int checkifMoved  = mto.shaken(mlistinScene.get(count));
+	 	int checkifMoved  = mto.shaken(mover);
 	 	
 		p.println("checking if it moved " + checkifMoved);
 		
 	 	if(passedTime2 > totalTime && checkifMoved > 0 ){
 	 		p.println("I MOVED");
 			//p.println("moveing moves to the second array " + movesInPlay.size());
-	 		movesInPlay.add(mlistinScene.get(count));
-	 		mlistinScene.remove(count);
+	 		//movesInPlay.add(mover);
+	
 	 		resetTime(); 
-	 		count++; 
-	 	} 
+	 		//count++; 
+	 	}
 	 	
 	//checkifMoved > 0 -- how to tell if a move has moved - if it has moved it greater than 0 
 	 
@@ -94,7 +94,7 @@ public void resetTime () {
 	 //solo. if both those things have happened move on to the next move but also keep updating that move 
 	 //this is going to call for a subarray of moves that know they've already been triggered. 
 	 //you then need to loop through that array. note mto is dumb and only knows which move it's got if you pass it in
-} 
+
  public void updateInPlayMoves() {
 	 //updates moves currently in play 
 	 for(int i = 0; i < movesInPlay.size(); i++){
