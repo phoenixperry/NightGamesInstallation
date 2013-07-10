@@ -52,7 +52,7 @@ public class OscObject extends Observable  implements Observer {
 		} 
 	} 
 	public void addToMessage() {
-		p.println(gx + "i am scaled gx?" + gy  + " i am gy" + gz +" i am gz" +on);
+		//p.println(gx + "i am scaled gx?" + gy  + " i am gy" + gz +" i am gz" +on);
 		if(message.equals("/move0")){
 //			for (int i = 0; i < 10; i++) {
 //				mySystem.addParticle();

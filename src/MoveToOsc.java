@@ -60,7 +60,7 @@ public class MoveToOsc extends Observable {
 			
 			holderz = p.map(gz[0], -20, 20, 0, 127);
 			holderz = p.abs(holderz);
-			p.println("i am the holder " + holderx);
+			//p.println("i am the holder " + holderx);
 			setChanged();
 			notifyObservers();
 			
@@ -135,7 +135,7 @@ public class MoveToOsc extends Observable {
 
 		float xt = PApplet.abs(getGX());
 		float yt = gy[0];
-		p.println(yt+"yt");
+	
 		float zt = PApplet.abs(getGZ());
 		//acts a high pass filter to weed junk out 
 		
@@ -194,18 +194,20 @@ public class MoveToOsc extends Observable {
 	}
 
 
-	public int shaken(PSMove currentMove){
+	public int shaken(PSMove currentMove, int i){
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
-		float yt = gy[0];
-		p.println("this is the yt"+ gy[0] );
-		p.println("this is the yt"+ yt );
+		float yt = PApplet.abs(gy[0]);
+		p.println(yt+"yt of Move " + i);
 		
-		if(yt > 1.3){
-			whileShaken +=yt; 
-			setChanged(); 
-			notifyObservers();
-		}	
+		float zt = PApplet.abs(getGZ());
+		//acts a high pass filter to weed junk out 
+		
+		if (yt > 1.3) {
+			whileShaken ++;
+		
+
+		}
 		else {
 			whileShaken = 0; 
 		} 

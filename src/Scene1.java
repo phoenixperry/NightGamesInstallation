@@ -46,12 +46,12 @@ public void resetTime () {
 	 			setMoveColorstoWhite(); 
 	 		}
 	 		
-	 		p.println("inside FIRST RUN");
+	// 		p.println("inside FIRST RUN");
 	
 			firstRun = false; 
 		}
 		if (!firstRun){
-			p.println("inside second RUN");
+			//p.println("inside second RUN");
 			colorLoop(mover, i); 
 			updateInPlayMoves();
 		}
@@ -64,28 +64,28 @@ public void resetTime () {
 	 //this loop runs every two seconds. 
 	 
 
-		p.println("inside color RUN");
+		//p.println("inside color RUN");
 		//get the top move in the 1st array  
 		//p.println("inside the move " + count);
-		colors.get(count); 
-		mlistinScene.get(count).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
-	 	mlistinScene.get(count).update_leds();
-	 	mlistinScene.get(count).set_rumble(100);
-		p.println(mlistinScene.get(count).getGx() + "move gx of the move color loop has");  
+		colors.get(i); 
+		mlistinScene.get(i).set_leds(colors.get(count).r, colors.get(count).g, colors.get(count).b);
+	 	mlistinScene.get(i).update_leds();
+	 	mlistinScene.get(i).set_rumble(100);
+		//p.println(mlistinScene.get(count).getGy() + "move gx of the move color loop has");  
 	 	passedTime2 = p.millis() - savedTime;
 	
-	 	int checkifMoved  = mto.shaken(mover);
+	 	int checkifMoved  = mto.shaken(mover , i);
 	 	
-		p.println("checking if it moved " + checkifMoved);
+		//p.println("checking if it moved " + checkifMoved);
 		
-	 	if(passedTime2 > totalTime && checkifMoved > 0 ){
-	 		p.println("I MOVED");
-			//p.println("moveing moves to the second array " + movesInPlay.size());
-	 		//movesInPlay.add(mover);
-	
-	 		resetTime(); 
-	 		//count++; 
-	 	}
+//	 	if(passedTime2 > totalTime && checkifMoved > 0 ){
+//	 		p.println("I MOVED");
+//			//p.println("moveing moves to the second array " + movesInPlay.size());
+//	 		//movesInPlay.add(mover);
+//	
+//	 		resetTime(); 
+//	 		//count++; 
+//	 	}
 	 	
 	//checkifMoved > 0 -- how to tell if a move has moved - if it has moved it greater than 0 
 	 

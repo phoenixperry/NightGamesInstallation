@@ -92,10 +92,10 @@ public class SceneManager implements Observer{
 				
 				mList.set(i_, move);
 				currentScene.mlistinScene.set(i_, move);
-				p.println(move.getGx() + "updating " + i_); 
+				//p.println(move.getGx() + "updating " + i_); 
 				currentScene.update( move, i_);
 				currentScene.display();
-				p.println(osc.gx + "test2"); 
+				//p.println(osc.gx + "test2"); 
 				
 			}
 		} 
