@@ -35,6 +35,9 @@ public class OscObject extends Observable  implements Observer {
 		myRemoteLocation =new NetAddress(location, 8000); 
 		
 	}
+	public void addObserver(Observable observable){
+		observable.addObserver(this); 
+	}
 	
 	public void update(Observable obs, Object arg){
 		if(obs instanceof MoveToOsc){
@@ -195,11 +198,13 @@ public class OscObject extends Observable  implements Observer {
 		receivedMsg = msg; 
 		oscReceived=(String)msg.addrPattern(); 
 		msgReceived(); 
-		//p.println(oscReceived); 
-//		typetag = msg.typetag(); 
-//		 p.println(" typetag: "+msg.typetag()+ msg.addrPattern().valueOf(0));
+		p.println(oscReceived); 
+		typetag = msg.typetag(); 
+		 p.println(" typetag: "+msg.typetag()+ msg.addrPattern().valueOf(0));
 		
 	}
+	
+	
 	
 	public void msgReceived() {
 		//p.println("notified");

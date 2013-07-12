@@ -6,6 +6,8 @@ import java.util.Observable;
 
 import java.util.ArrayList;
 
+import oscP5.OscMessage;
+
 public abstract class Scene extends Observable{
 	protected PApplet p; 
 	protected ArrayList<PSMove> mlistinScene; 
@@ -21,7 +23,8 @@ public abstract class Scene extends Observable{
 	public NightGames2.MovePalette violet_m = NightGames2.MovePalette.VIOLET_MOVE; 
 
 	protected ArrayList<NightGames2.MovePalette> colors = new ArrayList<NightGames2.MovePalette>(7);
- 
+	protected OscObject oscReciever;
+	protected String oscCurrentMessage; 
 	OscObject oscObject; 
 	Scene(PApplet p_){
 		p=  p_;
@@ -32,9 +35,14 @@ public abstract class Scene extends Observable{
 		colors.add(green_m);
 		colors.add(pink_m);
 		colors.add(grey_m); 
-		oscObject = new OscObject(p_, NightGames2.location, NightGames2.sendingPort, NightGames2.receiveingPort, this); 
-	} 
+		
+		// oscObject = new OscObject(p_, NightGames2.location, NightGames2.sendingPort, NightGames2.receiveingPort, this); 
 	
+	} 
+	public void setOscObject(OscObject osc_){
+		oscObject = osc_;
+		oscObject.addObserver(this);
+	} 
 	public void setMoves(ArrayList<PSMove> mlist_){
 	
 		mlistinScene = mlist_;
@@ -73,5 +81,10 @@ public abstract class Scene extends Observable{
 	
 	public void clearObservers(){
 		clearChanged();
-	} 
+	}
+	
+	public void receiveMessage(String theMessageString){
+		oscCurrentMessage = theMessageString;
+		p.println(oscCurrentMessage + "is in the scene");
+	}
 }
