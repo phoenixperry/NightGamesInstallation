@@ -141,40 +141,40 @@ public class NightGames2 extends PApplet {
 
 			//ParticleSystem psNow = mySystems.get(i);
 			PSMove move = mlist.get(i);	
-			osc.gx = 5; 
+			
 			sceneManager.updateScene(move, osc,i); 
 			
 
 				switch (i) {
 				case 0:
 					mto.handle(i, move, osc, btn);
-					mto.setLedColor(i, move, green_m.r, green_m.g, green_m.b);
+					//mto.setLedColor(i, move, green_m.r, green_m.g, green_m.b);
 
 					break;
 				case 1:
 					mto.handle(i, move, osc, btn);
-					mto.setLedColor(i, move, yellow_m.r, yellow_m.g, yellow_m.b);
+					//mto.setLedColor(i, move, yellow_m.r, yellow_m.g, yellow_m.b);
 					break;
 				case 2:
 					mto.handle(i, move, osc, btn);
 					//mto.handle(i, move, osc, psNow);
-					mto.setLedColor(i, move, blue_m.r, blue_m.g, blue_m.b);
+					//mto.setLedColor(i, move, blue_m.r, blue_m.g, blue_m.b);
 					break;
 				case 3:
 					mto.handle(i, move, osc, btn);
-					mto.setLedColor(i, move, pink_m.r, pink_m.g, pink_m.b);
+					//mto.setLedColor(i, move, pink_m.r, pink_m.g, pink_m.b);
 					break;
 				case 4:
 					mto.handle(i, move, osc, btn);
-					mto.setLedColor(i, move, red_m.r, red_m.g, red_m.b);
+					//mto.setLedColor(i, move, red_m.r, red_m.g, red_m.b);
 					break;
 				case 5:
 					mto.handle(i, move, osc, btn);
-					mto.setLedColor(i, move, grey_m.r, grey_m.g, grey_m.b);
+					//mto.setLedColor(i, move, grey_m.r, grey_m.g, grey_m.b);
 					break;
 				case 6:
 					//mto.handle(i, move, osc, mySystem);
-					mto.setLedColor(i, move, violet_m.r, violet_m.g, violet_m.b);
+					//mto.setLedColor(i, move, violet_m.r, violet_m.g, violet_m.b);
 					break;
 
 				default:

@@ -28,11 +28,12 @@ public abstract class Scene {
 		p=  p_;
 		colors.add(red_m); 
 		colors.add(yellow_m); 
-		colors.add(pink_m);
-		colors.add(grey_m); 
 		colors.add(violet_m);  
 		colors.add(blue_m); 
 		colors.add(green_m);
+		colors.add(pink_m);
+		colors.add(grey_m); 
+	
 	} 
 	
 	public void setMoves(ArrayList<PSMove> mlist_){
@@ -52,8 +53,8 @@ public abstract class Scene {
 
 	}
 	
-	public abstract void colorLoop(PSMove move, int i_);
-	
+
+	public abstract void colorLoop(PSMove mover);
 	public abstract void update(PSMove mover, int i); 
 	
 	public abstract void display(); 

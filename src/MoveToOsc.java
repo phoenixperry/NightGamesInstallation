@@ -19,7 +19,7 @@ public class MoveToOsc extends Observable {
 	//keeps a record of the most active move 
 	int activeMove = 0;
 	private int trigger = 0; 
-	public int whileShaken = 0; 
+	public boolean whileShaken = false; 
 	
 	MoveToOsc(PApplet p_) {
 		p = p_;
@@ -194,22 +194,22 @@ public class MoveToOsc extends Observable {
 	}
 
 
-	public int shaken(PSMove currentMove, int i){
+	public boolean shaken(PSMove currentMove){
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
-		float yt = PApplet.abs(gy[0]);
-		p.println(yt+"yt of Move " + i);
+		float yt = gy[0];
+		p.println(yt+"yt of Move " );
 		
 		float zt = PApplet.abs(getGZ());
 		//acts a high pass filter to weed junk out 
 		
 		if (yt > 1.3) {
-			whileShaken ++;
+			whileShaken = true;
 		
 
 		}
 		else {
-			whileShaken = 0; 
+			whileShaken = false; 
 		} 
 		return whileShaken; 
 	}
