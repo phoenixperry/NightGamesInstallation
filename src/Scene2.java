@@ -14,7 +14,7 @@ public class Scene2 extends Scene{
 	int passedTime; 
 	boolean firstRun = true;  
 	
-	int groupSize=2; 
+	int groupSize=0; 
 	//PApplet p; 
 	
 	Scene2(PApplet p_) {
@@ -28,7 +28,7 @@ public class Scene2 extends Scene{
  public void update(PSMove mover, int i_){
 	 	passedTime = p.millis() - savedTime;
 	 	mlistinScene.set(i_, mover);
-	 	
+	 	groupSize = mlistinScene.size()/2; 
 	 	//p.println("scene 2 updates");
 	 	if(firstRun){
 	 		while(passedTime < totalTime){
@@ -48,26 +48,32 @@ public class Scene2 extends Scene{
 	 				mlistinScene.get(i).set_leds(colors.get(0).r, colors.get(0).g,colors.get(0).b); 
 		 			mlistinScene.get(i).update_leds();
 	 		}
-	 		for(int i = groupSize+1; i < mlistinScene.size(); i++)
+	 		for(int i = groupSize; i < mlistinScene.size()-1; i++)
 	 		{
 	 			mlistinScene.get(i).set_leds(255,255,255); 
 	 			mlistinScene.get(i).update_leds();
 	 		}
+	 			
+	 			mlistinScene.get(6).set_leds(colors.get(2).r, colors.get(2).g,colors.get(2).b); 
+	 			mlistinScene.get(6).update_leds();
+	 		
 	 	}
 	 	
 	 	if(oscCurrentMessage == "/blue"){
 	 	
-	 			for(int i=0; i< groupSize; i++)
+	 			for(int i=groupSize; i< mlistinScene.size()-1; i++)
 	 			{
 	 				mlistinScene.get(i).set_leds(colors.get(3).r, colors.get(3).g,colors.get(3).b); 
 		 			mlistinScene.get(i).update_leds();
 	 			}
-		 		for(int i = groupSize+1; i < mlistinScene.size(); i++)
+		 		for(int i = 0; i < groupSize; i++)
 		 		{
 		 			mlistinScene.get(i).set_leds(255,255,255); 
 		 			mlistinScene.get(i).update_leds();
 		 		}
-	 		
+		 		
+	 			mlistinScene.get(6).set_leds(colors.get(2).r, colors.get(2).g,colors.get(2).b); 
+	 			mlistinScene.get(6).update_leds();
 	 	}
 	 	
 	 	if(oscCurrentMessage == "/winnerRed"){
