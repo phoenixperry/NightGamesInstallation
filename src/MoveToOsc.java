@@ -198,14 +198,13 @@ public class MoveToOsc extends Observable {
 		currentMove.get_gyroscope_frame(io.thp.psmove.Frame.Frame_SecondHalf, gx, gy,
 				gz);
 		float yt = gy[0];
-		p.println(yt+"yt of Move " );
+		//p.println(yt+"yt of Move " );
 		
 		float zt = PApplet.abs(getGZ());
 		//acts a high pass filter to weed junk out 
 		
 		if (yt > 1.3) {
-			whileShaken = true;
-		
+			whileShaken = true; 		
 
 		}
 		else {

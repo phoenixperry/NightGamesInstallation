@@ -1,13 +1,12 @@
 
 import processing.core.*;
-import java.util.TimerTask;
-import java.util.Timer;
+
 import io.thp.psmove.PSMove;
-import io.thp.psmove.psmoveapi;
+import java.util.Observable;
 
 import java.util.ArrayList;
 
-public abstract class Scene {
+public abstract class Scene extends Observable{
 	protected PApplet p; 
 	protected ArrayList<PSMove> mlistinScene; 
 	public  String name;
@@ -63,6 +62,16 @@ public abstract class Scene {
 		mto = mto_; 
 	}
 	
+	public abstract String getMessage();
 	
+	public abstract int getNumber();
 	
+	public void triggerObservers(){
+	 	setChanged();
+	 	notifyObservers();
+	} 
+	
+	public void clearObservers(){
+		clearChanged();
+	} 
 }

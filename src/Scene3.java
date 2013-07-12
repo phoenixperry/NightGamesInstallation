@@ -30,4 +30,12 @@ public class Scene3 extends Scene{
 	 p.println("scene 3 displays");
 	} 
  public void colorLoop(PSMove thisMove){}
+
+public String getMessage( ){
+	 String myString = "/shakenMove" ;
+	 return myString;
+}
+public int getNumber() {
+	return 0; 
+} 
 }

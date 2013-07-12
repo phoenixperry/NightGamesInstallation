@@ -1,4 +1,4 @@
-import io.thp.psmove.PSMove;
+ import io.thp.psmove.PSMove;
 
 
 import java.util.ArrayList;
@@ -20,12 +20,11 @@ public class Scene1 extends Scene{
 	int passedTime2; 
 	ArrayList<PSMove> movesInPlay = new ArrayList<PSMove>(); 
 	boolean firstRun = true; 
-	private int whileShaken = 0; 
-	private float[] gx = { 0.f };
-	private float[] gy = { 0.f };
-	private float[] gz = { 0.f };	
+
 	boolean shaken = false; 
-	boolean colorLoopComplete = false; 
+	boolean colorLoopComplete = false;
+	private int shakenMove = 0; 
+	
 	int[ ] beenShaken = {0,0,0,0,0,0,0};
 	
 	Scene1(PApplet p_) {
@@ -89,18 +88,29 @@ public void resetTime () {
 	 		 	mlistinScene.get(j).update_leds();
 	 		 	mlistinScene.get(j).set_rumble(0);
 	 	} 
-	 	
+		
+		//update more than just the tip
+		for(int k =0; k<count; k++){
+ 			mlistinScene.get(k).set_leds(colors.get(k).r,colors.get(k).g,colors.get(k).b);
+ 		 	mlistinScene.get(k).update_leds();
+		} 
+ 	
 		if(passedTime2 < totalTime){
 			
 		 	boolean shaken = mto.shaken(thisMove);
 		 	//account for first shake and ignore other shakes 
-		 	if(shaken && beenShaken[count]==0) beenShaken[count]=1;
-		 	
+		 	if(shaken && beenShaken[count]==0) 
+		 	{
+		 	beenShaken[count]=1;
+		 	shakenMove = count; 
+		 	triggerObservers();
+		 	}
 		 		//make sure it doens't run on loop
-		 		if(shaken && beenShaken[count] == 1) 
-		 		{
-		 			beenShaken[count] = 2;
-		 		} 
+	 		if(shaken && beenShaken[count] == 1) 
+	 		{
+	 			beenShaken[count] = 2;
+	 			clearObservers();
+	 		} 
 		 		
 		} else if(passedTime2 > totalTime && beenShaken[count]==2){ 
 			
@@ -108,22 +118,28 @@ public void resetTime () {
 			resetTime(); 
 			count++; 
 			p.println("count" + count);
+			
 	
 		}
 		//account for stupid players who don't shake the move 
 		else if (passedTime2 > totalTime && beenShaken[count]==0) {
 			resetTime();
 			mlistinScene.get(count).set_rumble(0);
-			count++;
-
-
+			count++; 
 		}
 		
 		
  	}	
 } 
-	
 
+ public String getMessage( ){
+	 String myString = "/shakenMove"; 
+	 return myString;
+ } 
+ @Override
+public int getNumber(){
+	return shakenMove;
+}
  public void display(){
 	
 	} 

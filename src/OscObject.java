@@ -17,6 +17,7 @@ public class OscObject extends Observable  implements Observer {
 	public String oscReceived; 
 	public OscMessage receivedMsg;
 	public String typetag; 
+	public int shakenMove; 
 	Observable observable; 
 	
 	float gx, gy,gz, trigger,on,off=0.0f; 
@@ -50,8 +51,16 @@ public class OscObject extends Observable  implements Observer {
 			
 			addToMessage();
 		} 
+		if(obs instanceof Scene1){
+			Scene1 currentScene = (Scene1)obs; 
+			this.message = currentScene.getMessage();
+			this.shakenMove = currentScene.getNumber(); 
+			addToMessage();
+			p.println("this osc is sending " +message+shakenMove );
+		} 
 	} 
 	public void addToMessage() {
+		
 		//p.println(gx + "i am scaled gx?" + gy  + " i am gy" + gz +" i am gz" +on);
 		if(message.equals("/move0")){
 //			for (int i = 0; i < 10; i++) {
@@ -170,10 +179,14 @@ public class OscObject extends Observable  implements Observer {
 			sendMessage(); 		
 			}
 		
+		else{
+			myMessage = new OscMessage(message); 
+			myMessage.add(shakenMove);
+			sendMessage();
+		 }
 	} 
 	public void sendMessage() {
 		oscP5.send(myMessage, myRemoteLocation); 
-	
 	} 
 	
 	public void oscEvent(OscMessage msg)
