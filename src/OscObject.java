@@ -179,9 +179,10 @@ public class OscObject extends Observable  implements Observer {
 			sendMessage(); 		
 			}
 		
-		else{
-			myMessage = new OscMessage(message); 
-			myMessage.add(shakenMove);
+		else if(message.equals("/shakenMove")){
+			
+			myMessage = new OscMessage(message + shakenMove); 
+
 			sendMessage();
 		 }
 	} 

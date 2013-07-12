@@ -103,7 +103,8 @@ public void resetTime () {
 		 	{
 		 	beenShaken[count]=1;
 		 	shakenMove = count; 
-		 	triggerObservers();
+			setChanged();
+		 	notifyObservers();
 		 	}
 		 		//make sure it doens't run on loop
 	 		if(shaken && beenShaken[count] == 1) 

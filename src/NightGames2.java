@@ -29,6 +29,11 @@ public class NightGames2 extends PApplet {
 	Repeller repeller;
 	SceneManager sceneManager; 
 	PSMove thisMove; 
+	public static final String location ="127.0.0.1"; 
+	public static final int sendingPort = 8000; 
+	public static final int receiveingPort = 8001; 
+	
+	
 	public enum Colors{
 		GREEN (94,191,140), 
 		YELLOW(252,167,40), 
@@ -77,7 +82,8 @@ public class NightGames2 extends PApplet {
 	public MovePalette red_m = MovePalette.RED_MOVE; 
 	public MovePalette grey_m = MovePalette.GREY_MOVE; 
 	public MovePalette violet_m = MovePalette.VIOLET_MOVE; 
-
+	
+	
 	
 	public void setup() {
 		size(1280,720);
@@ -92,7 +98,7 @@ public class NightGames2 extends PApplet {
 	
 		background(0);
 		mto = new MoveToOsc (this);
-		osc = new OscObject(this, "127.0.0.1", 8000,8001,mto); 
+		osc = new OscObject(this, location, sendingPort,receiveingPort,mto); 
 		//moves = new PSMove[psmoveapi.count_connected()];
 		
 		println(psmoveapi.count_connected()); 

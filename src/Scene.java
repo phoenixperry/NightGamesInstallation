@@ -21,7 +21,7 @@ public abstract class Scene extends Observable{
 	public NightGames2.MovePalette violet_m = NightGames2.MovePalette.VIOLET_MOVE; 
 
 	protected ArrayList<NightGames2.MovePalette> colors = new ArrayList<NightGames2.MovePalette>(7);
-	
+ 
 	OscObject oscObject; 
 	Scene(PApplet p_){
 		p=  p_;
@@ -32,7 +32,7 @@ public abstract class Scene extends Observable{
 		colors.add(green_m);
 		colors.add(pink_m);
 		colors.add(grey_m); 
-	
+		oscObject = new OscObject(p_, NightGames2.location, NightGames2.sendingPort, NightGames2.receiveingPort, this); 
 	} 
 	
 	public void setMoves(ArrayList<PSMove> mlist_){
@@ -67,7 +67,7 @@ public abstract class Scene extends Observable{
 	public abstract int getNumber();
 	
 	public void triggerObservers(){
-	 	setChanged();
+		setChanged();
 	 	notifyObservers();
 	} 
 	
